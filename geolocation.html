@@ -68,6 +68,32 @@
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
       console.log(lat, lng);
+
+        // 取得した緯度経度を使用したいので関数内に記述する
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=8ee077cd61f46211f655da8049d366f4&units=metric`;
+
+    axios
+      .get(url)
+      .then((response) => {
+        // リクエスト成功時の処理（responseに結果が入っている）
+        console.log(response);
+        // 画面に表示する処理
+        $('#latitude').text(response.data.coord.lat);
+        $('#longitude').text(response.data.coord.lon);
+        $('#weather').text(response.data.weather[0].description);
+        $('#temperature').text(response.data.main.temp);
+        $('#humidity').text(response.data.main.humidity);
+        $('#pressure').text(response.data.main.pressure);
+        
+      })
+      .catch(function (error) {
+        // リクエスト失敗時の処理（errorにエラー内容が入っている）
+        console.log(error);
+      })
+      .finally(function () {
+        // 成功失敗に関わらず必ず実行
+        console.log("done!");
+      });
     }
 
     // 位置情報取得に失敗した時の処理
