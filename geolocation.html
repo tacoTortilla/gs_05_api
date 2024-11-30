@@ -61,6 +61,27 @@
 
   <script>
 
+
+    // 位置情報取得に成功した時の処理
+    function getPositionSuccess(position) {
+      console.log(position);
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      console.log(lat, lng);
+    }
+
+    // 位置情報取得に失敗した時の処理
+    function getPositionError(error) {
+      const errorMessages = [
+        "位置情報が許可されてません",
+        "現在位置を特定できません",
+        "位置情報を取得する前にタイムアウトになりました",
+      ];
+      alert("error: " + errorMessages[error.code - 1]);
+    }
+
+    navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError);
+
   </script>
 </body>
 
