@@ -23,6 +23,16 @@
     // リクエストを送るurlを準備
     const url = 'https://www.googleapis.com/books/v1/volumes?q=intitle:javascript';
 
+    axios
+      .get(url)
+      .then(function(response){
+        console.log(response.data.items[0].volumeInfo.title);
+        const bookList = [];
+        response.data.items.forEach(function (item){
+          bookList.push('<p>' + item.volumeInfo.title + '<p>');
+        });
+        $('#output').html(bookList);
+      });
 
   </script>
 </body>
