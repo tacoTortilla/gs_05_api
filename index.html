@@ -58,38 +58,46 @@
       </tr>
     </table>
 
+    <br>
+    <br>
+    <h1>３時間毎の予報</h1>
+    
     <table>
       <tr>
         <th>項目</th>
-        <th>値</th>
+        <th>予報1</th>
+        <th>予報2</th>
+        <th>予報3</th>
       </tr>
       <tr>
         <td>時刻</td>
         <td id="time2"></td>
-      </tr>
-      <tr>
-        <td>緯度</td>
-        <td id="latitude2"></td>
-      </tr>
-      <tr>
-        <td>経度</td>
-        <td id="longitude2"></td>
+        <td id="time3"></td>
+        <td id="time4"></td>
       </tr>
       <tr>
         <td>天気</td>
         <td id="weather2"></td>
+        <td id="weather3"></td>
+        <td id="weather4"></td>
       </tr>
       <tr>
         <td>気温</td>
         <td id="temperature2"></td>
+        <td id="temperature3"></td>
+        <td id="temperature4"></td>
       </tr>
       <tr>
         <td>湿度</td>
         <td id="humidity2"></td>
+        <td id="humidity3"></td>
+        <td id="humidity4"></td>
       </tr>
       <tr>
         <td>気圧</td>
         <td id="pressure2"></td>
+        <td id="pressure3"></td>
+        <td id="pressure4"></td>
       </tr>
     </table>
 
@@ -145,14 +153,24 @@
         // リクエスト成功時の処理（responseに結果が入っている）
         console.log(response);  
         $('#time2').text(response.data.list[0].dt_txt);
-//        $('#latitude2').text(response.data.coord.lat);
-//        $('#longitude2').text(response.data.coord.lon);
-//        $('#weather2').text(response.data.weather[0].description);
-//        $('#temperature2').text(response.data.main.temp);
-//        $('#humidity2').text(response.data.main.humidity);
-//        $('#pressure2').text(response.data.main.pressure);
-      })
+        $('#weather2').text(response.data.list[0].weather[0].description);
+        $('#temperature2').text(response.data.list[0].main.temp);
+        $('#humidity2').text(response.data.list[0].main.humidity);
+        $('#pressure2').text(response.data.list[0].main.pressure);
 
+        $('#time3').text(response.data.list[1].dt_txt);
+        $('#weather3').text(response.data.list[1].weather[0].description);
+        $('#temperature3').text(response.data.list[1].main.temp);
+        $('#humidity3').text(response.data.list[1].main.humidity);
+        $('#pressure3').text(response.data.list[1].main.pressure);
+
+        $('#time4').text(response.data.list[2].dt_txt);
+        $('#weather4').text(response.data.list[2].weather[0].description);
+        $('#temperature4').text(response.data.list[2].main.temp);
+        $('#humidity4').text(response.data.list[2].main.humidity);
+        $('#pressure4').text(response.data.list[2].main.pressure);
+
+      })
     }
 
     // 位置情報取得に失敗した時の処理
