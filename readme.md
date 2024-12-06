@@ -10,6 +10,11 @@ apiを使った実装
 今の時刻の天気と
 今後の予報を表示する
 
+open wheather map
+windy.com
+
+　のAPIを使った
+
 今後は
 ブラッシュアップ予定
 他のAPIも試したい
